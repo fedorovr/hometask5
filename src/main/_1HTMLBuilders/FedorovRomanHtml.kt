@@ -3,7 +3,7 @@ package task
 import _1HTMLBuilders.*
 
 fun getTitleColor() = "#b9c9fe"
-fun getCellColor(row: Int, column: Int) = if ((row + column) %2 == 0) "#dce4ff" else "#eff2ff"
+fun getCellColor(row: Int, column: Int) = if ((row + column) % 2 == 0) "#dce4ff" else "#eff2ff"
 
 /*
 1) Fill the table with the proper values from products.
@@ -26,8 +26,21 @@ fun renderProductTable(): String {
                     text("Popularity")
                 }
             }
-            val products = getProducts()
 
+            getProducts().forEachIndexed { rowIdx, product ->
+                tr {
+                    var cellIdx = 0
+                    td (color = getCellColor(rowIdx, cellIdx++)) {
+                        text(product.description)
+                    }
+                    td (color = getCellColor(rowIdx, cellIdx++)) {
+                        text(product.price)
+                    }
+                    td (color = getCellColor(rowIdx, cellIdx)) {
+                        text(product.popularity)
+                    }
+                }
+            }
         }
     }.toString()
 }
