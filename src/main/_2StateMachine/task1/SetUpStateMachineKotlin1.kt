@@ -22,9 +22,8 @@ fun setUpStateMachine(): StateMachine {
 
     val machine = StateMachine(idle)
 
-    /*
     // Support the following way to configure state machine.
-    // Use (and implement) the interface StateBuilder defined in the file SurnameNameTask1.kt
+    // Use (and implement) the interface StateBuilder defined in the file FedorovRomanTask1.kt
 
     idle.configure {
         commands(unlockDoor, lockPanel)
@@ -45,10 +44,9 @@ fun setUpStateMachine(): StateMachine {
 
         // Bonus. Make the following way a legal way to define a transition as well.
         // Before implementing it, you can uncomment the 'transition' line below instead.
-        panelClosed leadsTo idle
-//        transition(panelClosed, idle)
+        // panelClosed leadsTo idle // TODO
+        transition(panelClosed, idle)
     }
-    */
 
     machine.addResetEvent(doorOpened)
     return machine
