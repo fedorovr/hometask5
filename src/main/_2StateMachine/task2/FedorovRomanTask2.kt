@@ -46,14 +46,11 @@ class StateMachineBuilder(val start: State) {
     fun state(stateName: String, init: StateBuilder.() -> Unit) {
         if (processedStates.any { it.state.code.equals(stateName) })
             throw IllegalStateException()
-        var s = futureStates.firstOrNull() { it.state.code.equals(stateName) }
-        if (s == null) {
-            s = StateBuilder(State(stateName))
-        } else {
-            futureStates = futureStates.filterNot { it.state.code.equals(stateName) }.toMutableList()
-        }
-        processedStates.add(s)
-        s.init()
+        val stateIdx = futureStates.indexOfFirst { it.state.code.equals(stateName) }
+        val newState = if (stateIdx == -1) StateBuilder(State(stateName)) else futureStates[stateIdx]
+        if (stateIdx != -1) futureStates = futureStates.filterNot { it.state.code.equals(stateName) }.toMutableList()
+        processedStates.add(newState)
+        newState.init()
     }
 
     fun getMachine(): StateMachine {
