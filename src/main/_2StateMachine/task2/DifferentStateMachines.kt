@@ -2,7 +2,7 @@ package _2StateMachine.task2
 
 import _2StateMachine.model.StateMachine
 
-fun createStateMachine1(): StateMachine = TODO() /*stateMachine("start") {
+fun createStateMachine1(): StateMachine = stateMachine("start") {
     event("whistle")
     event("finishLine")
 
@@ -19,9 +19,9 @@ fun createStateMachine1(): StateMachine = TODO() /*stateMachine("start") {
     state("finish") {
         commands("stop")
     }
-}*/
+}
 
-fun createStateMachine2(): StateMachine = TODO() /*stateMachine("switch_off") {
+fun createStateMachine2(): StateMachine = stateMachine("switch_off") {
     event("on")
     event("off")
 
@@ -31,9 +31,9 @@ fun createStateMachine2(): StateMachine = TODO() /*stateMachine("switch_off") {
     state("switch_on") {
         transition("off", "switch_off")
     }
-}*/
+}
 
-fun createStateMachine3(): StateMachine = TODO() /*stateMachine("switch_off") {
+fun createStateMachine3(): StateMachine = stateMachine("switch_off") {
     event("on")
     event("off")
 
@@ -48,4 +48,4 @@ fun createStateMachine3(): StateMachine = TODO() /*stateMachine("switch_off") {
         transition("off", "switch_off")
         commands("on")
     }
-}*/
+}
